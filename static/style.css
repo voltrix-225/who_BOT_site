@@ -1,0 +1,140 @@
+/* Basic reset */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+/* --- HERO --- */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem 2rem;
+  background: #161b22;
+}
+
+.logo {
+  font-family: "Courier New", monospace;
+  color: #8b949e;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #58a6ff;
+}
+
+.tagline {
+  margin: 0.5rem 0 1.5rem;
+  font-style: italic;
+}
+
+.cta {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: #238636;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* --- FEATURES --- */
+.features {
+  padding: 3rem 1rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
+
+/* --- DEMO --- */
+.demo {
+  padding: 3rem 1rem;
+  background: #0d1117;
+  border-top: 1px solid #30363d;
+}
+
+.demo h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.beta {
+  font-size: 0.7rem;
+  background: #8b949e;
+  color: #0d1117;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+#demoForm {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+#profileUrl {
+  flex: 1;
+  padding: 0.7rem;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  background: #0d1117;
+  color: #c9d1d9;
+}
+
+#demoForm button {
+  padding: 0.7rem 1rem;
+  background: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.output {
+  margin-top: 1.5rem;
+  background: #161b22;
+  padding: 1rem;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: #161b22;
+  border-top: 1px solid #30363d;
+}
+
+footer a {
+  color: #58a6ff;
+}

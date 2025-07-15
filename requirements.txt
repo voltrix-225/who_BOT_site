@@ -1,0 +1,5 @@
+praw
+flask
+flask-cors
+requests
+gunicorn

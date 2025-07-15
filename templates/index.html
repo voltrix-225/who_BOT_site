@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>who_BOT – Reddit Persona Profiler</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <pre class="logo">
+          _              ____   ___ _____
+__      _| |__   ___    | __ ) / _ \_   _|
+\ \ /\ / / '_ \ / _ \   |  _ \| | | || |  
+ \ V  V /| | | | (_) |  | |_) | |_| || |  
+  \_/\_/ |_| |_|\___/___|____/ \___/ |_|  
+                   |_____|               
+    </pre>
+
+    <h1>who_BOT</h1>
+    <p class="tagline">AI‑powered Reddit Persona Profiler</p>
+    <a href="#demo" class="cta">Try a demo ↓</a>
+  </header>
+
+  <!-- ===== FEATURES ===== -->
+  <section class="features">
+    <h2>How It Works</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Scrape</h3>
+        <p>Fetches a redditor’s public comments &amp; posts via PRAW.</p>
+      </div>
+      <div class="card">
+        <h3>Analyze</h3>
+        <p>Feeds the text to a <strong>Mistral</strong> LLM hosted on Hugging Face.</p>
+      </div>
+      <div class="card">
+        <h3>Profile</h3>
+        <p>Generates a Persona based on the User's comments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEMO (frontend‑only mock) ===== -->
+  <section id="demo" class="demo">
+    <h2>Instant Demo <span class="beta">BETA</span></h2>
+    <form id="demoForm">
+      <input
+        type="url"
+        id="profileUrl"
+        placeholder="Paste a Reddit profile URL (e.g., https://www.reddit.com/user/spez/)"
+        required
+      />
+      <button type="submit">Generate Persona</button>
+    </form>
+    <pre id="output" class="output"></pre>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+ 
+
+  <script src="static/script.js"></script>
+</body>
+</html>
