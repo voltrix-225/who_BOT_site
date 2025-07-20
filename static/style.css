@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family:'sans-serif';
   line-height: 1.6;
   background: #0d1117;
   color: #c9d1d9;
@@ -117,6 +117,8 @@ h1 {
 }
 
 .output {
+  font-family: 'sans-serif';
+
   margin-top: 1.5rem;
   background: #161b22;
   padding: 1rem;

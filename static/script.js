@@ -10,7 +10,7 @@ document.getElementById("demoForm").addEventListener("submit", async (e) => {
     output.textContent = "Please enter a profile URL.";
     return;
   }
-
+  
   output.textContent = "Generating Persona..";
   if (submitButton) {
     submitButton.disabled = true;

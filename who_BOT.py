@@ -5,14 +5,15 @@ import sys
 import requests
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
 # ───────────── CONFIG ──────────────
-CLIENT_ID = "ljTJ0iaVtfM1flTsfZSQ1w"
-CLIENT_SECRET = "P6yyQ1uE6SnVQ6nUwFBj9opXTzkzIA"
-HF_TOKEN = "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"
-USER_AGENT    = "script:reddit_persona_builder:v1.0 (by u/YourRedditUsername)"
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+HF_TOKEN = os.getenv("HF_API")
+USER_AGENT    = "script:reddit_persona_builder:v1.0 (by u/notgonnagivemaname)"
 ROUTER_URL    = "https://router.huggingface.co/novita/v3/openai/chat/completions"
 MODEL_NAME    = "mistralai/mistral-7b-instruct"
 DATA_DIR      = Path("data")
@@ -37,7 +38,7 @@ def user_exists(username):
     except (prawcore.exceptions.NotFound, prawcore.exceptions.Forbidden, AttributeError):
         return False
 
-def scrape_user_data(username, limit=100):
+def scrape_user_data(username, limit=40):
     user = reddit.redditor(username)
     comments, posts = [], []
 
@@ -57,18 +58,16 @@ def scrape_user_data(username, limit=100):
             "id": p.id,
             "title": p.title,
             "subreddit": p.subreddit.display_name,
-            "created_utc": p.created_utc,
-            "score": p.score,
-            "permalink": f"https://www.reddit.com{p.permalink}",
+
             "selftext": p.selftext
         })
 
     return {"username": username, "comments": comments, "posts": posts}
 
-def build_prompt(data, sample_limit=60):
+def build_prompt(data, sample_limit=30):
     intro = f"""You are an expert analyst tasked with building a user persona from Reddit activity. 
-    Keep your inference playful and light hearted, but hard hitting nonetheless, along with a short explanation, which may include multiple examples for each trait.
-
+    Keep your inference playful and light hearted, but hard hitting nonetheless, along with a short explanation, which may include multiple examples for each trait. Focus PRIMARILY ON COMMNETS OF THE USER
+    NECESSARY INSTRUCTION: DONT BOLD THE ANY TEXT IN YOUR ANSWERS, KEEP REST OF THE FORMATTING. DON'T MENTION LINKS, or cite lack of data
 Return the output in this structure:
 
 Username: <username>
@@ -96,7 +95,7 @@ Now here are up to {sample_limit} raw posts and comments from u/{data['username'
     for p in data["posts"][: sample_limit // 2]:
         body = p['selftext'] or "(no self-text)"
         snippets.append(
-            f"Post on r/{p['subreddit']} (score {p['score']}):\n\"{p['title']}\"\n{body}\n[Link: {p['permalink']}]\n"
+            f"Post on r/{p['subreddit']} \n\"{p['title']}\"\n{body}\n"
         )
 
     return intro + "\n---\n".join(snippets)
