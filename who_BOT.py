@@ -28,7 +28,7 @@ reddit = praw.Reddit(
 )
 
 def extract_username(profile_url):
-    match = re.search(r'reddit\.com/user/([\w-]+)/?', profile_url)
+    match = re.search(r'reddit\.com/user/([\w-]+)/?', profile_url) or re.search(r'reddit\.com/u/([\w-]+)/?', profile_url)
     return match.group(1) if match else None
 
 def user_exists(username):
